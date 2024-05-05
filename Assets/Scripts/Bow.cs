@@ -35,7 +35,6 @@ public class Bow : Weapon
 
     private void Shoot()
     {
-        Vector2 aimPos = mousePos.normalized;
         GameObject arrow = Instantiate(arrowPrefab, point.position, weaponParent.rotation);
         //arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(aimPos.y, aimPos.x) * Mathf.Deg2Rad);
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
