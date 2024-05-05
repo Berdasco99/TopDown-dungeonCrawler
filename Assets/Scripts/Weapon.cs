@@ -18,7 +18,7 @@ public abstract class Weapon : MonoBehaviour
     Vector2 mousePos;
     public Vector2 PointerPosition { get; set; }
     public Player playerScript;
-    [SerializeField] PauseMenu pauseMenu;
+    //[SerializeField] PauseMenu pauseMenu;
 
     public void AimLogic()
     {
@@ -29,11 +29,11 @@ public abstract class Weapon : MonoBehaviour
         transform.right = direction;
         Vector2 scale = transform.localScale;
 
-        if (direction.x < 0 && !playerScript.hasMelee)
+        if (direction.x < 0)
         {
             spriteRenderer.flipY = true;
         }
-        else if (direction.x > 0 && !playerScript.hasMelee)
+        else if (direction.x > 0)
         {
             spriteRenderer.flipY = false;
         }

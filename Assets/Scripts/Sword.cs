@@ -15,7 +15,7 @@ public class Sword : Weapon
     }
     void Update()
     {
-        if (playerScript.hasMelee == true)
+        if (playerScript.hasMelee)
         {
             AimLogic();
             weapon.SetActive(true);

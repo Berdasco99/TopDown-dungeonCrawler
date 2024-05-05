@@ -11,7 +11,7 @@ public class Bow : Weapon
     [SerializeField] float arrowForce = 20f;
     void Update()
     {
-        if (playerScript.hasRanged == true)
+        if (playerScript.hasRanged)
         {
             AimLogic();
             weapon.SetActive(true);
