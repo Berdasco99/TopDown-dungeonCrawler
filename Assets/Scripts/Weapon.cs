@@ -19,6 +19,7 @@ public abstract class Weapon : MonoBehaviour
     public Vector2 PointerPosition { get; set; }
     public Player playerScript;
     //[SerializeField] PauseMenu pauseMenu;
+    public Transform weaponParent;
 
     public void AimLogic()
     {
