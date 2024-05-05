@@ -35,15 +35,11 @@ public class Bow : Weapon
 
     private void Shoot()
     {
-        GameObject arrow = Instantiate(arrowPrefab, point.position, point.rotation);
-        //El firepoint.rotation le da el valor del Quaternion 0,0,0 pero cuando apunto a la derecha tiene que ser
-        //-90 y a la izquierda 90 en la Z o si no dispara para arriba ni puta idea de porque\
-
-        //SOLUCION
-        //El problema era que para girar el arma hacia scale.y = 0.7f; o -0,7f, esto hace que literalmente se gire sobre si misma
-        //el arma y se invierta todo, el angulo del firepoint tambien, asi que la solucion es usar Flip que simplemente
-        //gira el sprite en vez de girar todo
+        Vector2 aimPos = mousePos.normalized;
+        GameObject arrow = Instantiate(arrowPrefab, point.position, Quaternion.identity);
+        //arrow.transform.Rotate(0.0f, 0.0f, Mathf.Atan2(aimPos.y, aimPos.x) * Mathf.Deg2Rad);
         Rigidbody2D rb = arrow.GetComponent<Rigidbody2D>();
-        rb.AddForce(point.up * arrowForce, ForceMode2D.Impulse);
+        rb.AddForce(point.right * arrowForce, ForceMode2D.Impulse);
+        Destroy(arrow, 2f);
     }
 }

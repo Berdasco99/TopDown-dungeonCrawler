@@ -3,28 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PlayerMovement : MonoBehaviour
+public class MainPlayer : Player
 {
-
-    [Header("Jugador")]
-    public SpriteRenderer playerSprite;
-    public GameObject weaponParent;
-    public Rigidbody2D rb;
-    //I recommend 7 for the move speed, and 1.2 for the force damping
-    public float moveSpeed;
-    public float forceDamping;
-
-    [Header("Canvas")]
-    [SerializeField] PauseMenu pauseMenu;
-
-    public Vector2 forceToApply;
-    public Vector2 PlayerInput;
-    Vector2 mousePos;
-    public Camera cam;
-    public Animator animator;
-
-    public Vector2 PointerPosition { get; set; }
-
     void Update()
     {
         PlayerInput.x = Input.GetAxisRaw("Horizontal");
@@ -44,11 +24,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (direction.x < 0 /*&& pauseMenu.isPaused == false*/)
         {
-            playerSprite.flipX = true;
+            spriteRenderer.flipX = true;
         }
         else if (direction.x > 0 /*&& pauseMenu.isPaused == false*/)
         {
-            playerSprite.flipX = false;
+            spriteRenderer.flipX = false;
         }
         transform.localScale = scale;
     }

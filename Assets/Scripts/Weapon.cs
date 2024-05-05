@@ -15,15 +15,15 @@ public abstract class Weapon : MonoBehaviour
     public Animator playerAnimator;
     public Camera cam;
     protected Vector2 direction;
-    Vector2 mousePos;
+    public Vector2 mousePos;
     public Vector2 PointerPosition { get; set; }
     public Player playerScript;
     //[SerializeField] PauseMenu pauseMenu;
 
     public void AimLogic()
     {
-        PointerPosition = mousePos;
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        PointerPosition = mousePos;
 
         Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;

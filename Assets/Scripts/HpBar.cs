@@ -8,24 +8,20 @@ using UnityEngine.UI;
 public class HpBar : MonoBehaviour
 {
     public Image healthbar;
+    public Player player;
 
-    public float health, maxHealth = 100f, minHealth = 0f;
     public float lerpSpeed;
-    void Start()
-    {
-        health = maxHealth;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (health > maxHealth)
+        if (player.currentHealth > player.maxHealth)
         {
-            health = maxHealth;
+            player.currentHealth = player.maxHealth;
         }
-        if (health < minHealth)
+        if (player.currentHealth < player.minHealth)
         {
-            health = minHealth;
+            player.currentHealth = player.minHealth;
         }
         lerpSpeed = 6f * Time.deltaTime;
 
@@ -34,24 +30,24 @@ public class HpBar : MonoBehaviour
 
     private void HealthBarFiller()
     {
-        healthbar.fillAmount = Mathf.Lerp(healthbar.fillAmount, health / maxHealth, lerpSpeed);
-        Color healthColor = Color.HSVToRGB(0, 0.72f, health / maxHealth + 0.4f);
+        healthbar.fillAmount = Mathf.Lerp(healthbar.fillAmount, player.currentHealth / player.maxHealth, lerpSpeed);
+        Color healthColor = Color.HSVToRGB(0, 0.72f, player.currentHealth / player.maxHealth + 0.4f);
         healthbar.color = healthColor;
     }
 
-    public void Damage(float damagePoints)
+    public void Damage(int damagePoints)
     {
-        if (health > 0)
+        if (player.currentHealth > 0)
         {
-            health -= damagePoints;
+            player.currentHealth -= damagePoints;
         }
     }
 
-    public void Heal(float healingPoints)
+    public void Heal(int healingPoints)
     {
-        if (health < maxHealth)
+        if (player.currentHealth < player.maxHealth)
         {
-            health += healingPoints;
+            player.currentHealth += healingPoints;
         }
     }
 }
