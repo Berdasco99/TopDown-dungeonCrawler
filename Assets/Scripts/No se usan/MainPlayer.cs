@@ -7,8 +7,8 @@ public class MainPlayer : Player
 {
     void Update()
     {
-        PlayerInput.x = Input.GetAxisRaw("Horizontal");
-        PlayerInput.y = Input.GetAxisRaw("Vertical");
+        playerInput.x = Input.GetAxisRaw("Horizontal");
+        playerInput.y = Input.GetAxisRaw("Vertical");
 
         Movement();
         Flip();
@@ -35,7 +35,7 @@ public class MainPlayer : Player
 
     void Movement()
     {
-        Vector2 moveForce = PlayerInput * moveSpeed;
+        Vector2 moveForce = playerInput * moveSpeed;
         moveForce += forceToApply;
         forceToApply /= forceDamping;
         if (Mathf.Abs(forceToApply.x) <= 0.01f && Mathf.Abs(forceToApply.y) <= 0.01f)

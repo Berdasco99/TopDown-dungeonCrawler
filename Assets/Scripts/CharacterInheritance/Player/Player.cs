@@ -16,7 +16,8 @@ public class Player : Entity
     
     [Header("VECTORES")]
     public Vector2 forceToApply;
-    public Vector2 PlayerInput;
+    public Vector2 playerInput;
+    public Vector2 moveForce;
     public Vector2 mousePos;
     public Vector2 PointerPosition { get; set; }
 
@@ -43,10 +44,11 @@ public class Player : Entity
 
     public void PlayerFunctions()
     {
-        PlayerInput.x = Input.GetAxisRaw("Horizontal");
-        PlayerInput.y = Input.GetAxisRaw("Vertical");
+        playerInput.x = Input.GetAxisRaw("Horizontal");
+        playerInput.y = Input.GetAxisRaw("Vertical");
         Flip();
         Movement();
+        AnimationHandling();
     }
 
     void Flip()
@@ -70,7 +72,8 @@ public class Player : Entity
 
     void Movement()
     {
-        Vector2 moveForce = PlayerInput * moveSpeed;
+        playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        moveForce = playerInput * moveSpeed;
         moveForce += forceToApply;
         forceToApply /= forceDamping;
         if (Mathf.Abs(forceToApply.x) <= 0.01f && Mathf.Abs(forceToApply.y) <= 0.01f)
@@ -81,8 +84,17 @@ public class Player : Entity
 
         Vector2 lookDir = mousePos - rb.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
-        //rb.rotation = angle;
     }
 
-    //Crear metodo DASH(){};
+    void AnimationHandling()
+    {
+        if(playerInput.y != 0 || playerInput.x != 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+    }
 }

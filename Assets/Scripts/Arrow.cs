@@ -11,7 +11,7 @@ public class Arrow : MonoBehaviour
         if (collider.CompareTag("Enemy"))
         {
             Debug.Log("Ah, que dolor!");
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }
