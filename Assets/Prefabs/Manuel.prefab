@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 2287460901049775606}
   - component: {fileID: 1050759114325292948}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Manuel
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -549,7 +549,8 @@ MonoBehaviour:
   hasRanged: 0
   hasMelee: 0
   forceToApply: {x: 0, y: 0}
-  PlayerInput: {x: 0, y: 0}
+  playerInput: {x: 0, y: 0}
+  moveForce: {x: 0, y: 0}
   mousePos: {x: 0, y: 0}
   dashingPower: 24
   dashingTime: 0.2

@@ -42,7 +42,7 @@ public class Player : Entity
         hasMelee = false;
     }
 
-    public void PlayerFunctions()
+    protected virtual void PlayerFunctions()
     {
         playerInput.x = Input.GetAxisRaw("Horizontal");
         playerInput.y = Input.GetAxisRaw("Vertical");
@@ -51,7 +51,7 @@ public class Player : Entity
         AnimationHandling();
     }
 
-    void Flip()
+    protected virtual void Flip()
     {
         PointerPosition = mousePos;
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -70,7 +70,7 @@ public class Player : Entity
         transform.localScale = scale;
     }
 
-    void Movement()
+    protected virtual void Movement()
     {
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         moveForce = playerInput * moveSpeed;
@@ -86,7 +86,7 @@ public class Player : Entity
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
     }
 
-    void AnimationHandling()
+    protected virtual void AnimationHandling()
     {
         if(playerInput.y != 0 || playerInput.x != 0)
         {

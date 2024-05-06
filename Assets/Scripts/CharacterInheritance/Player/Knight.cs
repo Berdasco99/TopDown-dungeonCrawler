@@ -18,9 +18,14 @@ public class Knight : Player
         if (isDashing)
         {
             return;
-        }
+        } 
         PlayerFunctions();
         Dash();
+    }
+
+    protected override void PlayerFunctions()
+    {
+        base.PlayerFunctions();
     }
 
     public void Dash()

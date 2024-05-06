@@ -21,7 +21,7 @@ public abstract class Weapon : MonoBehaviour
     //[SerializeField] PauseMenu pauseMenu;
     public Transform weaponParent;
 
-    public void AimLogic()
+    protected virtual void AimLogic()
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         PointerPosition = mousePos;
