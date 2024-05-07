@@ -12,7 +12,6 @@ public class Knight : Player
     public float dashingCD = 1f;
     public TrailRenderer trailRenderer;
 
-    // Update is called once per frame
     void Update()
     {
         if (isDashing)
