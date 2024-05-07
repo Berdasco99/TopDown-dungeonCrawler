@@ -167,7 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02daeb4d50ebcf4cab62773925f9725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomPrefab: {fileID: 1353077790669298930, guid: ceedc33dc7ecded46b8b89a1ec28f3e0, type: 3}
+  roomPrefab:
+  - {fileID: 1353077790669298930, guid: ceedc33dc7ecded46b8b89a1ec28f3e0, type: 3}
+  - {fileID: 1353077790669298930, guid: 9f10acbea0244f34a8c94a99f06bf720, type: 3}
+  - {fileID: 1353077790669298930, guid: a30141a79c801264985abdf36db71d3d, type: 3}
   maxRooms: 15
   minRooms: 7
 --- !u!1001 &1592248960
