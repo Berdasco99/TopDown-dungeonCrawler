@@ -10,23 +10,53 @@ public class RoomSpawnPoint : MonoBehaviour
     // 3 --> Left door
     // 4 --> Right door
 
-    private void Update()
+    private RoomTemplate templates;
+    private int rand;
+    private bool spawned = false;
+
+    void Start()
     {
-        if(openingDirection == 1)
+        templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplate>();
+        Invoke("Spawn", 0.1f);
+    }
+
+    void Spawn()
+    {
+        if (spawned == false)
         {
-            // Need to spawn a room with a BOTTOM door.
+            if (openingDirection == 1)
+            {
+                // Need to spawn a room with a BOTTOM door.
+                rand = Random.Range(0, templates.bottomRooms.Length);
+                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+            }
+            else if (openingDirection == 2)
+            {
+                // Need to spawn a room with a TOP door.
+                rand = Random.Range(0, templates.topRooms.Length);
+                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+            }
+            else if (openingDirection == 3)
+            {
+                // Need to spawn a room with a LEFT door.
+                rand = Random.Range(0, templates.leftRooms.Length);
+                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+            }
+            else if (openingDirection == 4)
+            {
+                // Need to spawn a room with a RIGHT door.
+                rand = Random.Range(0, templates.rightRooms.Length);
+                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+            }
+            spawned = true;
         }
-        else if(openingDirection == 2)
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("SpawnPoint"))
         {
-            // Need to spawn a room with a TOP door.
-        }
-        else if (openingDirection == 3)
-        {
-            // Need to spawn a room with a LEFT door.
-        }
-        else if (openingDirection == 4)
-        {
-            // Need to spawn a room with a RIGHT door.
+            Destroy(gameObject);
         }
     }
 }
