@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class RoomSpawnPoint : MonoBehaviour
@@ -17,7 +18,7 @@ public class RoomSpawnPoint : MonoBehaviour
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplate>();
-        Invoke("Spawn", 0.1f);
+        Invoke("Spawn", 2f);
     }
 
     void Spawn()
@@ -34,19 +35,19 @@ public class RoomSpawnPoint : MonoBehaviour
             {
                 // Need to spawn a room with a TOP door.
                 rand = Random.Range(0, templates.topRooms.Length);
-                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
             }
             else if (openingDirection == 3)
             {
                 // Need to spawn a room with a LEFT door.
                 rand = Random.Range(0, templates.leftRooms.Length);
-                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
             }
             else if (openingDirection == 4)
             {
                 // Need to spawn a room with a RIGHT door.
                 rand = Random.Range(0, templates.rightRooms.Length);
-                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
             }
             spawned = true;
         }
