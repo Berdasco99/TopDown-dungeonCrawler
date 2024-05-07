@@ -122,24 +122,32 @@ public class RoomManager : MonoBehaviour
             //Left neighbour
             newRoomScript.OpenDoor(Vector2Int.left);
             leftRoomScript.OpenDoor(Vector2Int.right);
+
+            //Aqui desplazo el valor de la camara sumandole -12,0
         }
         if (x < gridSizeX - 1 && roomGrid[x + 1, y] != 0)
         {
             //Right neighbour
             newRoomScript.OpenDoor(Vector2Int.right);
             rigthRoomScript.OpenDoor(Vector2Int.left);
+
+            //Aqui desplazo el valor de la camara sumandole 12,0
         }
         if (y > 0 && roomGrid[x, y - 1] != 0)
         {
             //Bottom neighbour
             newRoomScript.OpenDoor(Vector2Int.down);
             bottomRoomScript.OpenDoor(Vector2Int.up);
+
+            //Aqui desplazo el valor de la camara sumandole 0,-20
         }
         if (y < gridSizeY - 1 && roomGrid[x, y + 1] != 0)
         {
             //Top neighbour
             newRoomScript.OpenDoor(Vector2Int.up);
             topRoomScript.OpenDoor(Vector2Int.down);
+
+            //Aqui desplazo el valor de la camara sumandole 20,0
         }
     }
 
