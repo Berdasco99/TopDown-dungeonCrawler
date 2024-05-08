@@ -7,8 +7,8 @@ public abstract class Entity : MonoBehaviour
     [Header("ENTITY CLASS")]
     [Header("ATRIBUTOS")]
     public int maxHealth;
-    public int currentHealth;
-    public int minHealth = 0;
+    [HideInInspector] public int currentHealth;
+    [HideInInspector] public int minHealth = 0;
     public int moveSpeed;
     public float forceDamping;
     [Header("FISICAS")]

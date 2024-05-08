@@ -123,57 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &814593325
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 814593326}
-  - component: {fileID: 814593327}
-  m_Layer: 0
-  m_Name: RoomManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &814593326
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 814593325}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.37577462, y: -0.15789665, z: -0.050082345}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &814593327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 814593325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02daeb4d50ebcf4cab62773925f9725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roomPrefab:
-  - {fileID: 1353077790669298930, guid: 5f0facb906ac7294caa6990f00f14168, type: 3}
-  - {fileID: 1353077790669298930, guid: efcda196ae22dd942a98becb0b0f66d8, type: 3}
-  - {fileID: 1353077790669298930, guid: 364e95b777958044f85aa6dde1d0e37e, type: 3}
-  - {fileID: 1353077790669298930, guid: 5dc4cba6db92c2442a0536b46ff71f9c, type: 3}
-  maxRooms: 15
-  minRooms: 10
 --- !u!1001 &1592248960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -389,10 +338,67 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1001 &5844599862812597038
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 256959937302739012, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.37577462
+      objectReference: {fileID: 0}
+    - target: {fileID: 256959937302739012, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.15789665
+      objectReference: {fileID: 0}
+    - target: {fileID: 256959937302739012, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.050082345
+      objectReference: {fileID: 0}
+    - target: {fileID: 256959937302739012, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 256959937302739012, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256959937302739012, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256959937302739012, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256959937302739012, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256959937302739012, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256959937302739012, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887550349222117799, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: m_Name
+      value: RoomManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: faba42c52b791d949a0a5612368f734d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1904114900}
-  - {fileID: 814593326}
+  - {fileID: 5844599862812597038}
   - {fileID: 1592248960}
