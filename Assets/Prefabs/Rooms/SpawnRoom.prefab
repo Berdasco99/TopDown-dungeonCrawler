@@ -239,13 +239,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5024489595371663262}
   - component: {fileID: 3357990813892425792}
+  - component: {fileID: 3411828691867977844}
   m_Layer: 0
   m_Name: BottomCameraCheck
-  m_TagString: Untagged
+  m_TagString: CameraCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5024489595371663262
 Transform:
   m_ObjectHideFlags: 0
@@ -306,6 +307,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3073015, y: 0.75442934}
   m_EdgeRadius: 0
+--- !u!114 &3411828691867977844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665047625871869665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264506499810f314abb621eab065f1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coordinates: {x: 0, y: -12}
+  playerCoordinates: {x: 0, y: -4}
 --- !u!1 &1353077790669298930
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,13 +627,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2051084726263260374}
   - component: {fileID: 3335864194480613417}
+  - component: {fileID: 3869789493794633969}
   m_Layer: 0
   m_Name: RightCameraCheck
-  m_TagString: Untagged
+  m_TagString: CameraCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2051084726263260374
 Transform:
   m_ObjectHideFlags: 0
@@ -679,6 +695,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9149418, y: 2.1908069}
   m_EdgeRadius: 0
+--- !u!114 &3869789493794633969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3814758086847715601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264506499810f314abb621eab065f1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coordinates: {x: 20, y: 0}
+  playerCoordinates: {x: 4, y: 0}
 --- !u!1 &3943896439323816720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,13 +1421,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1456250952716928470}
   - component: {fileID: 7668033231514532473}
+  - component: {fileID: 8095288928224082459}
   m_Layer: 0
   m_Name: TopCameraCheck
-  m_TagString: Untagged
+  m_TagString: CameraCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1456250952716928470
 Transform:
   m_ObjectHideFlags: 0
@@ -1458,6 +1489,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3304906, y: 0.43324518}
   m_EdgeRadius: 0
+--- !u!114 &8095288928224082459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6211077428129490037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264506499810f314abb621eab065f1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coordinates: {x: 0, y: 12}
+  playerCoordinates: {x: 0, y: 4}
 --- !u!1 &6360400225209880551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3451,13 +3496,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6466041752623679362}
   - component: {fileID: 4506941014845079042}
+  - component: {fileID: 4507370140167598299}
   m_Layer: 0
   m_Name: LeftCameraCheck
-  m_TagString: Untagged
+  m_TagString: CameraCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6466041752623679362
 Transform:
   m_ObjectHideFlags: 0
@@ -3518,6 +3564,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.48449898, y: 2.2201524}
   m_EdgeRadius: 0
+--- !u!114 &4507370140167598299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6518922460595969607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264506499810f314abb621eab065f1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coordinates: {x: -20, y: 0}
+  playerCoordinates: {x: -4, y: 0}
 --- !u!1 &6916765572602731737
 GameObject:
   m_ObjectHideFlags: 0

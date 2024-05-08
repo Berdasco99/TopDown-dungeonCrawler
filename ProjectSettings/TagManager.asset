@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - SpawnPoint
   - Rooms
+  - CameraCheck
   layers:
   - Default
   - TransparentFX

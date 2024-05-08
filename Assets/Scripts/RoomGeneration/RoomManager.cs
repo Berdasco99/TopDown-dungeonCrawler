@@ -18,6 +18,7 @@ public class RoomManager : MonoBehaviour
     int gridSizeX = 10;
     int gridSizeY = 10;
 
+
     private List<GameObject> roomObjects = new List<GameObject>();
 
     private Queue<Vector2Int> roomQueue = new Queue<Vector2Int>();
@@ -59,6 +60,7 @@ public class RoomManager : MonoBehaviour
             generationComplete = true;
             Debug.Log($"Generation succesfully completed!, {roomCount} rooms created");
         }
+
     }
 
     private bool TryGenerateRoom(Vector2Int roomIndex)
@@ -124,6 +126,8 @@ public class RoomManager : MonoBehaviour
             leftRoomScript.OpenDoor(Vector2Int.right);
 
             //Aqui desplazo el valor de la camara sumandole -12,0
+            //cameraHandler.GetComponent<CameraHandler>().coordinates = new Vector2(-12, 0);
+
         }
         if (x < gridSizeX - 1 && roomGrid[x + 1, y] != 0)
         {
@@ -132,6 +136,7 @@ public class RoomManager : MonoBehaviour
             rigthRoomScript.OpenDoor(Vector2Int.left);
 
             //Aqui desplazo el valor de la camara sumandole 12,0
+            //cameraHandler.GetComponent<CameraHandler>().coordinates = new Vector2(12, 0);
         }
         if (y > 0 && roomGrid[x, y - 1] != 0)
         {
@@ -140,6 +145,7 @@ public class RoomManager : MonoBehaviour
             bottomRoomScript.OpenDoor(Vector2Int.up);
 
             //Aqui desplazo el valor de la camara sumandole 0,-20
+            //cameraHandler.GetComponent<CameraHandler>().coordinates = new Vector2(0, -20);
         }
         if (y < gridSizeY - 1 && roomGrid[x, y + 1] != 0)
         {
@@ -147,7 +153,8 @@ public class RoomManager : MonoBehaviour
             newRoomScript.OpenDoor(Vector2Int.up);
             topRoomScript.OpenDoor(Vector2Int.down);
 
-            //Aqui desplazo el valor de la camara sumandole 20,0
+            //Aqui desplazo el valor de la camara sumandole 0,20
+            //cameraHandler.GetComponent<CameraHandler>().coordinates = new Vector2(0, 20);
         }
     }
 
