@@ -95,7 +95,7 @@ public class RoomManager : MonoBehaviour
         roomQueue.Enqueue(roomIndex);
         roomGrid[x, y] = 1;
         roomCount++;
-        i = UnityEngine.Random.Range(0, roomPrefab.Length);
+        i = UnityEngine.Random.Range(1, roomPrefab.Length);
 
 
         var newRoom = Instantiate(roomPrefab[i], GetPositionFromGridIndex(roomIndex), Quaternion.identity);
