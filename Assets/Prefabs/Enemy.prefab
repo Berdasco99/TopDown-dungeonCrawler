@@ -180,3 +180,4 @@ MonoBehaviour:
   boxCollider: {fileID: 0}
   animator: {fileID: 0}
   spriteRenderer: {fileID: 5383596765825535953}
+  chaseDistance: 4
