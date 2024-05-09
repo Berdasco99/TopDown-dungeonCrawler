@@ -21,12 +21,16 @@ public class Player : Entity
     public Vector2 mousePos;
     public Vector2 PointerPosition { get; set; }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            maxHealth = currentHealth - 1;
+           float damageTaken = collision.gameObject.GetComponent<Enemy>().damage;
+
+            if (currentHealth > 0)
+            {
+                currentHealth -= damageTaken;
+            }
         }
     }
 
@@ -49,6 +53,19 @@ public class Player : Entity
         Flip();
         Movement();
         AnimationHandling();
+        HealthCap();
+    }
+
+    protected void HealthCap()
+    {
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        if (currentHealth < minHealth)
+        {
+            currentHealth = minHealth;
+        }
     }
 
     protected virtual void Flip()

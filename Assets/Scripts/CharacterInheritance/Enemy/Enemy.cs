@@ -7,6 +7,7 @@ public class Enemy : Entity
     protected GameObject player;
     protected float distance;
     public float chaseDistance;
+    public float damage;
 
     protected void EnemyFunctions()
     {

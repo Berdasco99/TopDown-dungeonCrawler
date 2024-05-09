@@ -6,9 +6,9 @@ public abstract class Entity : MonoBehaviour
 {
     [Header("ENTITY CLASS")]
     [Header("ATRIBUTOS")]
-    public int maxHealth;
-    [HideInInspector] public int currentHealth;
-    [HideInInspector] public int minHealth = 0;
+    public float maxHealth;
+    public float currentHealth;
+    [HideInInspector] public float minHealth = 0f;
     public int moveSpeed;
     public float forceDamping;
     [Header("FISICAS")]
@@ -17,4 +17,9 @@ public abstract class Entity : MonoBehaviour
     [Header("VISUAL")]
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+
+    private void Awake()
+    {
+        currentHealth = maxHealth;
+    }
 }

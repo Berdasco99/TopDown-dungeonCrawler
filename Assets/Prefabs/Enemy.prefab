@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5664466066456027152}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,3 +181,4 @@ MonoBehaviour:
   animator: {fileID: 0}
   spriteRenderer: {fileID: 5383596765825535953}
   chaseDistance: 4
+  damage: 50
