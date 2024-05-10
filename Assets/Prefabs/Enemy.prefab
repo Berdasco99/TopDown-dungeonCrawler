@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5383596765825535953}
   - component: {fileID: 1871766411214674968}
   - component: {fileID: 2057552201987698586}
+  - component: {fileID: 7411439812349839000}
   - component: {fileID: 5664466066456027152}
   m_Layer: 0
   m_Name: Enemy
@@ -140,7 +141,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6144083056168523904}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -159,6 +160,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &7411439812349839000
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6144083056168523904}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5664466066456027152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,14 +193,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b9ae8da7de4a04296e4d979075e9f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 50
   currentHealth: 0
   minHealth: 0
   moveSpeed: 2
   forceDamping: 1.2
-  rb: {fileID: 0}
-  boxCollider: {fileID: 0}
-  animator: {fileID: 0}
+  rb: {fileID: 2057552201987698586}
+  boxCollider: {fileID: 1871766411214674968}
+  animator: {fileID: 7411439812349839000}
   spriteRenderer: {fileID: 5383596765825535953}
   chaseDistance: 4
-  damage: 50
+  damage: 20

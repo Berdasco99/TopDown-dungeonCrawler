@@ -22,4 +22,16 @@ public abstract class Entity : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
+
+    protected void HealthCap()
+    {
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        if (currentHealth < minHealth)
+        {
+            currentHealth = minHealth;
+        }
+    }
 }

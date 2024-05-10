@@ -56,18 +56,6 @@ public class Player : Entity
         HealthCap();
     }
 
-    protected void HealthCap()
-    {
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
-        if (currentHealth < minHealth)
-        {
-            currentHealth = minHealth;
-        }
-    }
-
     protected virtual void Flip()
     {
         PointerPosition = mousePos;

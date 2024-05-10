@@ -22,7 +22,6 @@ public class CameraHandler : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             MoveCamera();
-            Debug.Log($"El valor de las coordenadas a las que la camara deberia moverse es {coordinates}");
             player.transform.Translate(playerCoordinates);
         }
 

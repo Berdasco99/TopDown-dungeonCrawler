@@ -9,6 +9,7 @@ TagManager:
   - SpawnPoint
   - Rooms
   - CameraCheck
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX

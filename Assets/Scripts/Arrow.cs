@@ -3,15 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class Arrow : Projectile
 {
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-
-        if (collider.CompareTag("Enemy"))
-        {
-            Debug.Log("Ah, que dolor!");
-        }
-        Destroy(gameObject);
-    }
+    
 }

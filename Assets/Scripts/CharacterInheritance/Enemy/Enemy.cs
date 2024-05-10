@@ -9,9 +9,29 @@ public class Enemy : Entity
     public float chaseDistance;
     public float damage;
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("PlayerAttack"))
+        {
+            float damageTaken = collision.gameObject.GetComponent<Projectile>().damage;
+
+            if (currentHealth > 0)
+            {
+                //Damage taken animation
+                currentHealth -= damageTaken;
+            }
+            if(currentHealth <= 0)
+            {
+                //Death animation
+                Destroy(gameObject);
+            }
+        }
+    }
+
     protected void EnemyFunctions()
     {
         MoveTowards();
+        HealthCap();
     }
 
     protected void MoveTowards()
