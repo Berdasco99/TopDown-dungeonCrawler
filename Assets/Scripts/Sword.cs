@@ -8,6 +8,7 @@ public class Sword : Weapon
     public float delay = 0.3f;
     private bool attackBlock;
     [SerializeField] float attackRange = 0.5f;
+    public LayerMask hitLayers;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class Sword : Weapon
             AimLogic();
             weapon.SetActive(true);
             
-            //SwordLogic();
+            SwordLogic();
         }
         else if (!playerScript.hasMelee)
         {
@@ -52,13 +53,13 @@ public class Sword : Weapon
         attackBlock = true;
         StartCoroutine(DelayAttack());
 
-        //Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(swordPoint.position, attackRange, hitLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(point.position, attackRange, hitLayers);
 
-        //foreach (Collider2D entity in hitEnemies)
-        //{
-        //    entity.GetComponent<ClaseEnemigo>().TakeDamage(25);
-        //    //Falta hacer que se rompan los jarrones
-        //}
+        foreach (Collider2D entity in hitEnemies)
+        {
+            entity.GetComponent<Enemy>().damageTaken = damage;
+            //Falta hacer que se rompan los jarrones
+        }
     }
 
     private void OnDrawGizmosSelected()

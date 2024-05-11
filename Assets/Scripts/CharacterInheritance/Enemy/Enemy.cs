@@ -8,12 +8,13 @@ public class Enemy : Entity
     protected float distance;
     public float chaseDistance;
     public float damage;
+    public float damageTaken;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerAttack"))
         {
-            float damageTaken = collision.gameObject.GetComponent<Projectile>().damage;
+            damageTaken = collision.gameObject.GetComponent<Projectile>().damage;
 
             if (currentHealth > 0)
             {
