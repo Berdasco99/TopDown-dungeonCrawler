@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -16,10 +17,12 @@ public abstract class Weapon : MonoBehaviour
     public Camera cam;
     protected Vector2 direction;
     public Vector2 mousePos;
+    protected bool attackBlock;
     public Vector2 PointerPosition { get; set; }
     public Player playerScript;
     //[SerializeField] PauseMenu pauseMenu;
     public Transform weaponParent;
+    public Image reloadBar;
 
     protected virtual void AimLogic()
     {

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Sword : Weapon
 {
+    [Header("Propias")]
     public float delay = 0.3f;
-    private bool attackBlock;
     [SerializeField] float attackRange = 0.5f;
     public LayerMask hitLayers;
 
