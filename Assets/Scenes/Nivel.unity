@@ -735,6 +735,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8922140300987812913, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: roomPrefab.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922140300987812913, guid: faba42c52b791d949a0a5612368f734d, type: 3}
+      propertyPath: roomPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 1353077790669298930, guid: 57f1c62d781f7ef42a967768aa3272e1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -889,10 +897,18 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1765811917451041245, guid: 19c21ff62766e9e4088425ac3f516b78, type: 3}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5025361817743135348, guid: 19c21ff62766e9e4088425ac3f516b78, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 5782363411026914351, guid: 19c21ff62766e9e4088425ac3f516b78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7522486820879682404, guid: 19c21ff62766e9e4088425ac3f516b78, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
