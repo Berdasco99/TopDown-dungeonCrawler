@@ -10,6 +10,8 @@ TagManager:
   - Rooms
   - CameraCheck
   - PlayerAttack
+  - Boss
+  - BossRoom
   layers:
   - Default
   - TransparentFX

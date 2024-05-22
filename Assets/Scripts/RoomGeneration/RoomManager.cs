@@ -29,6 +29,8 @@ public class RoomManager : MonoBehaviour
 
     private bool generationComplete = false;
 
+    private bool bossRoomGenerated = false;
+
     private void Start()
     {
        roomGrid = new int[gridSizeX, gridSizeY];
@@ -40,7 +42,7 @@ public class RoomManager : MonoBehaviour
 
     private void Update()
     {
-        if(roomQueue.Count > 0 && roomCount < maxRooms && !generationComplete) 
+        if (roomQueue.Count > 0 && roomCount < maxRooms && !generationComplete) 
         {
             Vector2Int roomIndex = roomQueue.Dequeue();
             int gridX = roomIndex.x;
@@ -50,9 +52,9 @@ public class RoomManager : MonoBehaviour
             TryGenerateRoom(new Vector2Int(gridX + 1, gridY));
             TryGenerateRoom(new Vector2Int(gridX, gridY + 1));
             TryGenerateRoom(new Vector2Int(gridX, gridY - 1));
-        }else if (roomCount < minRooms)
+        }else if (roomCount < minRooms || bossRoomGenerated == false)
         {
-            Debug.Log($"Roomcount was less than the minimun amount of rooms. Trying again, {roomCount} was the count");
+            Debug.Log($"Roomcount was less than the minimun amount of rooms or BossRoom wasn't generated. Trying again, {roomCount} was the count");
             RegenerateRooms();
         }
         else if (!generationComplete)
@@ -95,14 +97,24 @@ public class RoomManager : MonoBehaviour
         roomQueue.Enqueue(roomIndex);
         roomGrid[x, y] = 1;
         roomCount++;
-        i = UnityEngine.Random.Range(1, roomPrefab.Length);
 
+        i = UnityEngine.Random.Range(1, roomPrefab.Length);//Permitimos que la bossroom se genere
+
+        if (bossRoomGenerated)
+        {
+            i = UnityEngine.Random.Range(2, roomPrefab.Length - 1); //Para que esto funcione hacemos la bossroom sea siempre la ultima sala en la lista de salas, asi el -1 impide que salga elegida a la hora de generarse
+        }
 
         var newRoom = Instantiate(roomPrefab[i], GetPositionFromGridIndex(roomIndex), Quaternion.identity);
         newRoom.GetComponent<Room>().RoomIndex = roomIndex;
         newRoom.name = $"Room-{roomCount}";
         roomObjects.Add(newRoom);
         OpenDoors(newRoom, x, y);
+
+        if (newRoom.tag == "BossRoom" && bossRoomGenerated == false)
+        {
+            bossRoomGenerated = true;
+        }
 
         return true;
     }
@@ -124,37 +136,24 @@ public class RoomManager : MonoBehaviour
             //Left neighbour
             newRoomScript.OpenDoor(Vector2Int.left);
             leftRoomScript.OpenDoor(Vector2Int.right);
-
-            //Aqui desplazo el valor de la camara sumandole -12,0
-            //cameraHandler.GetComponent<CameraHandler>().coordinates = new Vector2(-12, 0);
-
         }
         if (x < gridSizeX - 1 && roomGrid[x + 1, y] != 0)
         {
             //Right neighbour
             newRoomScript.OpenDoor(Vector2Int.right);
             rigthRoomScript.OpenDoor(Vector2Int.left);
-
-            //Aqui desplazo el valor de la camara sumandole 12,0
-            //cameraHandler.GetComponent<CameraHandler>().coordinates = new Vector2(12, 0);
         }
         if (y > 0 && roomGrid[x, y - 1] != 0)
         {
             //Bottom neighbour
             newRoomScript.OpenDoor(Vector2Int.down);
             bottomRoomScript.OpenDoor(Vector2Int.up);
-
-            //Aqui desplazo el valor de la camara sumandole 0,-20
-            //cameraHandler.GetComponent<CameraHandler>().coordinates = new Vector2(0, -20);
         }
         if (y < gridSizeY - 1 && roomGrid[x, y + 1] != 0)
         {
             //Top neighbour
             newRoomScript.OpenDoor(Vector2Int.up);
             topRoomScript.OpenDoor(Vector2Int.down);
-
-            //Aqui desplazo el valor de la camara sumandole 0,20
-            //cameraHandler.GetComponent<CameraHandler>().coordinates = new Vector2(0, 20);
         }
     }
 
@@ -181,6 +180,7 @@ public class RoomManager : MonoBehaviour
         roomQueue.Clear();
         roomCount = 0;
         generationComplete = false;
+        bossRoomGenerated = false;
 
         Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2, gridSizeY / 2);
         StartRoomGenerationFromRoom(initialRoomIndex);
