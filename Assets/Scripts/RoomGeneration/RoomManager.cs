@@ -9,6 +9,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] GameObject[] roomPrefab;
     [SerializeField] private int maxRooms = 15;
     [SerializeField] private int minRooms = 10;
+    [SerializeField] private int minDistanceFromStartForBossRoom = 5; // Minimum distance for boss room
 
     int i;
 
@@ -17,7 +18,6 @@ public class RoomManager : MonoBehaviour
 
     int gridSizeX = 10;
     int gridSizeY = 10;
-
 
     private List<GameObject> roomObjects = new List<GameObject>();
 
@@ -31,18 +31,20 @@ public class RoomManager : MonoBehaviour
 
     private bool bossRoomGenerated = false;
 
+    private Vector2Int initialRoomIndex;
+
     private void Start()
     {
-       roomGrid = new int[gridSizeX, gridSizeY];
-       roomQueue = new Queue<Vector2Int>();
+        roomGrid = new int[gridSizeX, gridSizeY];
+        roomQueue = new Queue<Vector2Int>();
 
-        Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2, gridSizeY / 2);
+        initialRoomIndex = new Vector2Int(gridSizeX / 2, gridSizeY / 2);
         StartRoomGenerationFromRoom(initialRoomIndex);
     }
 
     private void Update()
     {
-        if (roomQueue.Count > 0 && roomCount < maxRooms && !generationComplete) 
+        if (roomQueue.Count > 0 && roomCount < maxRooms && !generationComplete)
         {
             Vector2Int roomIndex = roomQueue.Dequeue();
             int gridX = roomIndex.x;
@@ -52,15 +54,16 @@ public class RoomManager : MonoBehaviour
             TryGenerateRoom(new Vector2Int(gridX + 1, gridY));
             TryGenerateRoom(new Vector2Int(gridX, gridY + 1));
             TryGenerateRoom(new Vector2Int(gridX, gridY - 1));
-        }else if (roomCount < minRooms || bossRoomGenerated == false)
+        }
+        else if (roomCount < minRooms || bossRoomGenerated == false)
         {
-            Debug.Log($"Roomcount was less than the minimun amount of rooms or BossRoom wasn't generated. Trying again, {roomCount} was the count");
+            Debug.Log($"Roomcount was less than the minimum amount of rooms or BossRoom wasn't generated. Trying again, {roomCount} was the count");
             RegenerateRooms();
         }
         else if (!generationComplete)
         {
             generationComplete = true;
-            Debug.Log($"Generation succesfully completed!, {roomCount} rooms created");
+            Debug.Log($"Generation successfully completed!, {roomCount} rooms created");
         }
 
     }
@@ -74,22 +77,22 @@ public class RoomManager : MonoBehaviour
         {
             return false;
         }
-            
+
         if (roomGrid[x, y] != 0)
         {
             return false;
         }
-           
+
         if (roomCount >= maxRooms)
         {
             return false;
         }
-        if(UnityEngine.Random.value < 0.5f && roomIndex != Vector2Int.zero)
+        if (UnityEngine.Random.value < 0.5f && roomIndex != Vector2Int.zero)
         {
             return false;
         }
 
-        if(CountAdjacentRooms(roomIndex) > 1)
+        if (CountAdjacentRooms(roomIndex) > 1)
         {
             return false;
         }
@@ -98,11 +101,20 @@ public class RoomManager : MonoBehaviour
         roomGrid[x, y] = 1;
         roomCount++;
 
-        i = UnityEngine.Random.Range(1, roomPrefab.Length);//Permitimos que la bossroom se genere
+        i = UnityEngine.Random.Range(1, roomPrefab.Length);// Allow boss room to be generated
 
+        // Ensure the boss room is only generated far from the start room
         if (bossRoomGenerated)
         {
-            i = UnityEngine.Random.Range(2, roomPrefab.Length - 1); //Para que esto funcione hacemos la bossroom sea siempre la ultima sala en la lista de salas, asi el -1 impide que salga elegida a la hora de generarse
+            i = UnityEngine.Random.Range(2, roomPrefab.Length - 1); // Adjust to exclude boss room
+        }
+        else
+        {
+            float distanceFromStart = Vector2Int.Distance(initialRoomIndex, roomIndex);
+            if (distanceFromStart < minDistanceFromStartForBossRoom)
+            {
+                i = UnityEngine.Random.Range(2, roomPrefab.Length - 1); // Adjust to exclude boss room
+            }
         }
 
         var newRoom = Instantiate(roomPrefab[i], GetPositionFromGridIndex(roomIndex), Quaternion.identity);
@@ -111,7 +123,7 @@ public class RoomManager : MonoBehaviour
         roomObjects.Add(newRoom);
         OpenDoors(newRoom, x, y);
 
-        if (newRoom.tag == "BossRoom" && bossRoomGenerated == false)
+        if (newRoom.tag == "BossRoom" && !bossRoomGenerated)
         {
             bossRoomGenerated = true;
         }
@@ -123,35 +135,35 @@ public class RoomManager : MonoBehaviour
     {
         Room newRoomScript = room.GetComponent<Room>();
 
-        //Neighbours
-        Room leftRoomScript = GetRoomScriptAt(new Vector2(x - 1, y)); //LeftRoom
-        Room rigthRoomScript = GetRoomScriptAt(new Vector2(x + 1, y)); //RightRoom
-        Room topRoomScript = GetRoomScriptAt(new Vector2(x, y + 1)); //TopRoom
-        Room bottomRoomScript = GetRoomScriptAt(new Vector2(x, y - 1)); //BottomRoom
+        // Neighbours
+        Room leftRoomScript = GetRoomScriptAt(new Vector2(x - 1, y)); // LeftRoom
+        Room rightRoomScript = GetRoomScriptAt(new Vector2(x + 1, y)); // RightRoom
+        Room topRoomScript = GetRoomScriptAt(new Vector2(x, y + 1)); // TopRoom
+        Room bottomRoomScript = GetRoomScriptAt(new Vector2(x, y - 1)); // BottomRoom
 
         // Determine which doors to open based on the direction
 
         if (x > 0 && roomGrid[x - 1, y] != 0)
         {
-            //Left neighbour
+            // Left neighbour
             newRoomScript.OpenDoor(Vector2Int.left);
             leftRoomScript.OpenDoor(Vector2Int.right);
         }
         if (x < gridSizeX - 1 && roomGrid[x + 1, y] != 0)
         {
-            //Right neighbour
+            // Right neighbour
             newRoomScript.OpenDoor(Vector2Int.right);
-            rigthRoomScript.OpenDoor(Vector2Int.left);
+            rightRoomScript.OpenDoor(Vector2Int.left);
         }
         if (y > 0 && roomGrid[x, y - 1] != 0)
         {
-            //Bottom neighbour
+            // Bottom neighbour
             newRoomScript.OpenDoor(Vector2Int.down);
             bottomRoomScript.OpenDoor(Vector2Int.up);
         }
         if (y < gridSizeY - 1 && roomGrid[x, y + 1] != 0)
         {
-            //Top neighbour
+            // Top neighbour
             newRoomScript.OpenDoor(Vector2Int.up);
             topRoomScript.OpenDoor(Vector2Int.down);
         }
@@ -161,7 +173,7 @@ public class RoomManager : MonoBehaviour
     {
         GameObject roomObject = roomObjects.Find(r => r.GetComponent<Room>().RoomIndex == index);
 
-        if(roomObject != null)
+        if (roomObject != null)
         {
             return roomObject.GetComponent<Room>();
         }
@@ -171,7 +183,7 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    //Clear all rooms and try again
+    // Clear all rooms and try again
     private void RegenerateRooms()
     {
         roomObjects.ForEach(Destroy);
@@ -184,7 +196,6 @@ public class RoomManager : MonoBehaviour
 
         Vector2Int initialRoomIndex = new Vector2Int(gridSizeX / 2, gridSizeY / 2);
         StartRoomGenerationFromRoom(initialRoomIndex);
-        
     }
 
     private int CountAdjacentRooms(Vector2Int roomIndex)
@@ -193,26 +204,24 @@ public class RoomManager : MonoBehaviour
         int y = roomIndex.y;
         int count = 0;
 
-        if(x > 0 && roomGrid[x - 1, y] != 0)
+        if (x > 0 && roomGrid[x - 1, y] != 0)
         {
-            count++;//Left neighbour
+            count++;// Left neighbour
         }
-        if(x < gridSizeX - 1 && roomGrid[x + 1, y] != 0)
+        if (x < gridSizeX - 1 && roomGrid[x + 1, y] != 0)
         {
-            count++;//Right neighbour
+            count++;// Right neighbour
         }
-        if(y > 0 && roomGrid[x, y - 1] != 0)
+        if (y > 0 && roomGrid[x, y - 1] != 0)
         {
-            count++;//Bottom neighbour
+            count++;// Bottom neighbour
         }
-        if(y < gridSizeY - 1 && roomGrid[x, y + 1] != 0)
+        if (y < gridSizeY - 1 && roomGrid[x, y + 1] != 0)
         {
-            count++;//Top neighbour
+            count++;// Top neighbour
         }
 
         return count;
-
-
     }
 
     private void StartRoomGenerationFromRoom(Vector2Int roomIndex)
@@ -222,7 +231,7 @@ public class RoomManager : MonoBehaviour
         int y = roomIndex.y;
         roomGrid[x, y] = 1;
         roomCount++;
-        var initialRoom = Instantiate(roomPrefab[0], GetPositionFromGridIndex(roomIndex),Quaternion.identity);
+        var initialRoom = Instantiate(roomPrefab[0], GetPositionFromGridIndex(roomIndex), Quaternion.identity);
         initialRoom.name = $"Room-{roomCount}";
         initialRoom.GetComponent<Room>().RoomIndex = roomIndex;
         roomObjects.Add(initialRoom);
@@ -233,7 +242,7 @@ public class RoomManager : MonoBehaviour
         int gridX = gridIndex.x;
         int gridY = gridIndex.y;
 
-        //Obtenemos la posicion de la habitacion en funcion a donde spawnea en el grid
+        // Get the position of the room based on its grid index
         return new Vector3(roomWidth * (gridX - gridSizeX / 2), roomHeight * (gridY - gridSizeY / 2));
     }
 
@@ -242,9 +251,9 @@ public class RoomManager : MonoBehaviour
         Color gizmoColor = new Color(0, 1, 1, 0.5f);
         Gizmos.color = gizmoColor;
 
-        for(int x = 0; x < gridSizeX; x++)
+        for (int x = 0; x < gridSizeX; x++)
         {
-            for(int y = 0; y < gridSizeY; y++)
+            for (int y = 0; y < gridSizeY; y++)
             {
                 Vector3 position = GetPositionFromGridIndex(new Vector2Int(x, y));
                 Gizmos.DrawWireCube(position, new Vector3(roomWidth, roomHeight, 1));
