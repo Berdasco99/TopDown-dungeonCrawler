@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private int minRooms = 10;
     [SerializeField] private int minDistanceFromStartForBossRoom = 5; // Minimum distance for boss room
 
-    int i;
+    private int i;
+    private int j;
 
     int roomWidth = 20;
     int roomHeight = 12;
@@ -33,8 +35,16 @@ public class RoomManager : MonoBehaviour
 
     private Vector2Int initialRoomIndex;
 
+    [Header("Loading Screen")]
+    public GameObject LoadingScreen;
+    public Sprite[] backgroundImage;
+
     private void Start()
     {
+        j = UnityEngine.Random.Range(0, backgroundImage.Length);
+        LoadingScreen.GetComponentInChildren<Image>().sprite = backgroundImage[j];
+        LoadingScreen.SetActive(true);
+
         roomGrid = new int[gridSizeX, gridSizeY];
         roomQueue = new Queue<Vector2Int>();
 
@@ -64,6 +74,8 @@ public class RoomManager : MonoBehaviour
         {
             generationComplete = true;
             Debug.Log($"Generation successfully completed!, {roomCount} rooms created");
+
+            StartCoroutine(ImGonnaMakeYouWaitForAnArbitraryAmountOfTimeBecauseWhyElseWouldIBotherToMakeALoadingScreenForIfItsGonnaBeOnScreenForLessThanHalfASecond());
         }
 
     }
@@ -244,6 +256,12 @@ public class RoomManager : MonoBehaviour
 
         // Get the position of the room based on its grid index
         return new Vector3(roomWidth * (gridX - gridSizeX / 2), roomHeight * (gridY - gridSizeY / 2));
+    }
+
+    IEnumerator ImGonnaMakeYouWaitForAnArbitraryAmountOfTimeBecauseWhyElseWouldIBotherToMakeALoadingScreenForIfItsGonnaBeOnScreenForLessThanHalfASecond()
+    {
+        yield return new WaitForSeconds(2);
+        LoadingScreen.SetActive(false);
     }
 
     private void OnDrawGizmos()
