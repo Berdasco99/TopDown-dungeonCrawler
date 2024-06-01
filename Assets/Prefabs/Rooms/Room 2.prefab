@@ -619,6 +619,7 @@ MonoBehaviour:
   leftDoorCover: {fileID: 3177863711219209895}
   rightDoorCover: {fileID: 5931052781718121290}
   parentEnemy: {fileID: 3776709546694527854}
+  allChildEnemiesArray: []
   allChildEnemies: []
 --- !u!1 &1538241684352068281
 GameObject:
@@ -1478,7 +1479,7 @@ GameObject:
   - component: {fileID: 6002020157505722922}
   - component: {fileID: 616745628780106160}
   - component: {fileID: 3483908195801159072}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}

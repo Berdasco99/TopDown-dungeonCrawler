@@ -33,7 +33,7 @@ public class Enemy : Entity
 
     protected void EnemyFunctions()
     {
-        MoveTowards();
+        //MoveTowards();
         HealthCap();
     }
 
