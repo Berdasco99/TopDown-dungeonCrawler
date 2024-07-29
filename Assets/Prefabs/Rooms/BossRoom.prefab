@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9034034591822916233}
   - component: {fileID: 2979151931016601107}
   - component: {fileID: 2577668229446805259}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BottomDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 5024489595371663262}
   - component: {fileID: 3357990813892425792}
   - component: {fileID: 3411828691867977844}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BottomCameraCheck
   m_TagString: CameraCheck
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 2322022738658515845}
   - component: {fileID: 7229094225675089234}
   - component: {fileID: 8266778709329924174}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BottomDoorCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4043131957045499921}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftDoor Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 7348134847688612485}
   - component: {fileID: 8808751415364170083}
   - component: {fileID: 8673720420863832440}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -897,7 +897,7 @@ GameObject:
   - component: {fileID: 5810548847488736313}
   - component: {fileID: 1424483140958958617}
   - component: {fileID: 6680291554803288253}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftDoorCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1126,7 +1126,7 @@ GameObject:
   - component: {fileID: 3595591435751168165}
   - component: {fileID: 8926742400216971858}
   - component: {fileID: 5144347993987246791}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TopDoorCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1385,7 +1385,7 @@ GameObject:
   - component: {fileID: 2051084726263260374}
   - component: {fileID: 3335864194480613417}
   - component: {fileID: 3869789493794633969}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightCameraCheck
   m_TagString: CameraCheck
   m_Icon: {fileID: 0}
@@ -1479,7 +1479,7 @@ GameObject:
   - component: {fileID: 6002020157505722922}
   - component: {fileID: 616745628780106160}
   - component: {fileID: 3483908195801159072}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2144,7 +2144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 343398371628590639}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BottomDoor Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2178,7 +2178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6413134660664199779}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TopDoor Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2249,7 +2249,7 @@ GameObject:
   - component: {fileID: 1388464886695816895}
   - component: {fileID: 4866162999285041781}
   - component: {fileID: 752799914236642031}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightDoorCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2476,7 +2476,7 @@ GameObject:
   - component: {fileID: 1456250952716928470}
   - component: {fileID: 7668033231514532473}
   - component: {fileID: 8095288928224082459}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TopCameraCheck
   m_TagString: CameraCheck
   m_Icon: {fileID: 0}
@@ -4547,7 +4547,7 @@ GameObject:
   - component: {fileID: 6466041752623679362}
   - component: {fileID: 4506941014845079042}
   - component: {fileID: 4507370140167598299}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftCameraCheck
   m_TagString: CameraCheck
   m_Icon: {fileID: 0}
@@ -4641,7 +4641,7 @@ GameObject:
   - component: {fileID: 7482236484093055260}
   - component: {fileID: 8936237397439211705}
   - component: {fileID: 4620536721478600132}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TopDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4870,7 +4870,7 @@ GameObject:
   - component: {fileID: 6212779623978911433}
   - component: {fileID: 3960758953973963416}
   - component: {fileID: 859670925095542684}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5095,7 +5095,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1229584739232105479}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightDoor Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
